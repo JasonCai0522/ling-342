@@ -1,0 +1,12 @@
+{
+    "total_stories": 100,
+    "emotion_counts": {
+        "sadness": 41,
+        "anger": 27,
+        "fear": 25,
+        "joy": 6,
+        "love": 1
+    },
+    "angry": 27,
+    "not_angry": 73
+}
