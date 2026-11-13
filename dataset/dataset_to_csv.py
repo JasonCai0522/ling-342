@@ -14,25 +14,16 @@ print(ds)
 
 
 for split, dataset in ds.items():
-    dataset.to_csv(f"./dataset/{split}.csv", index=False)
+    dataset.to_csv(f"./dataset/full_dataset.csv", index=False)
 
 df = pd.read_csv("./dataset/train.csv")
-
-
-# Add code for filtering here
-# df_row = df[df['emotion'] == 'angry']
-
 
 df.to_csv('df1.csv', columns = ['emotion', 'text'], index=False)
 df_row_col = pd.read_csv('df1.csv')
 
-# Sampling 200 rows from the dataframe
-#df_sample = df_row_col.sample(n=200)
+# Sample 170 rows for training and 75 rows for testing
+df_training = df_row_col.sample(n=170, random_state=42)
+df_testing = df_row_col.drop(df_training.index).sample(n=75, random_state=42)
 
-# Sample 
-
-# print(ds)
-# row = ds["train"][0]
-# print(row["emotion"], "—", row["topic"])
-# for i, story in enumerate(row["stories"], 1):   # 3 stories per row
-#     print(f"[story {i}] {story[:80]}...")
+df_training.to_csv('./dataset/dataset/training.csv', index=False)
+df_testing.to_csv('./dataset/dataset/testing.csv', index=False)
