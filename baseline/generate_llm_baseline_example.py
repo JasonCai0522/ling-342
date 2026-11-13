@@ -2,9 +2,9 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B-Instruct-2507")
+tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b-it")
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen3-4B-Instruct-2507",
+    "google/gemma-2-2b-it",
     device_map="auto",
     torch_dtype=torch.bfloat16,
 )
