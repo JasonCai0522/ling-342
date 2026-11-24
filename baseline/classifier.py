@@ -49,7 +49,7 @@ def run_classifier( classifier,
 
     print(classifier_result)
     filtered_result = list(filter(lambda x:
-            x["label"] == "anger", classifier_result))
+            x["label"] in ["anger", "angry"], classifier_result))
 
     print(filtered_result)
     score = filtered_result[0]["score"]
@@ -114,11 +114,10 @@ classifier_results = ClassifierResult(false_positives = 0,
     false_negatives_examples = [])
 
 for row in df.itertuples():
-
     print(row.emotion)
     classifier_results = run_classifier(emotion_classifier, 
-                                        row.text, row.emotion, 
-                                        (row.emotion == "angry"), 
+                                        row.text, row.label, 
+                                        (row.label == "angry"), 
                                         classifier_results)
                                         
 
